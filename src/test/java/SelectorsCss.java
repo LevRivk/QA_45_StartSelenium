@@ -14,6 +14,7 @@ public class SelectorsCss {
         System.out.println("text: "+ elementTextHeader.getText());
 
 
+
         driver.quit();
 
     }
