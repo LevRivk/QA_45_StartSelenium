@@ -12,6 +12,7 @@ public class ILCarroXPath {
     @Test
     public void typeRegForm() {
         driver.navigate().to("https://ilcarro.web.app/registration?url=%2Fsearch");
+        //driver.manage().window().maximize();
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -45,6 +46,10 @@ public class ILCarroXPath {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+        driver.findElement(By.xpath("driver.findElement(By.xpath(\"//label[@for='terms-of-use']\")).click();"));
+
+
         WebElement checkBox = driver.findElement(By.xpath("//input[@id='terms-of-use']"));
         if (!checkBox.isSelected()) {
             checkBox.click();
@@ -56,6 +61,17 @@ public class ILCarroXPath {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+
+        WebElement btnYalla = driver.findElement(By.xpath("//button [@type='submit']"));
+        btnYalla.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
