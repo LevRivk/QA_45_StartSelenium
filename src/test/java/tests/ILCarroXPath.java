@@ -8,8 +8,9 @@ import org.testng.annotations.Test;
 
 public class ILCarroXPath {
     WebDriver driver = new ChromeDriver();
+
     @Test
-    public void typeRegForm(){
+    public void typeRegForm() {
         driver.navigate().to("https://ilcarro.web.app/registration?url=%2Fsearch");
         try {
             Thread.sleep(500);
@@ -31,7 +32,7 @@ public class ILCarroXPath {
             throw new RuntimeException(e);
         }
         WebElement inputEmail = driver.findElement(By.xpath("//input[@id='email']"));
-        inputEmail.sendKeys("myEmail@gmail.com");
+        inputEmail.sendKeys("myemail@gmail.com");
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -44,11 +45,42 @@ public class ILCarroXPath {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        driver.quit();
+        WebElement checkBox = driver.findElement(By.xpath("//input[@id='terms-of-use']"));
+        if (!checkBox.isSelected()) {
+            checkBox.click();
 
+        }
 
-
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
-}
+    @Test
+
+        public  void CheckVisibilityCheckBox  () {
+
+            WebDriver driver = new ChromeDriver();
+            driver.get("https://ilcarro.web.app/registration?url=%2Fsearch");
+            WebElement checkbox = driver.findElement(By.xpath("//input[@id='terms-of-use']"));
+            if (checkbox.isDisplayed()) {
+                System.out.println("Checkbox is visible on the page");
+            } else {
+                System.out.println("Checkbox is hidden.");
+            }
+            driver.quit();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
